@@ -11,3 +11,6 @@ details {
     gap: 10px;
     margin-right: 10px;
 }
+summary {
+    list-style: none 
+}
