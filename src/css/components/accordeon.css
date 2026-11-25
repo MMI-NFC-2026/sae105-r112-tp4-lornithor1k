@@ -19,3 +19,18 @@ summary img {
     height: 200px;
     margin-right: 5px;
 }
+details[open] h3,
+details[open] p {
+  animation: apparition 0.4s ease;
+}
+
+@keyframes apparition {
+  from {
+    opacity: 20;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 10;
+    transform: translateX(0);
+  }
+}
