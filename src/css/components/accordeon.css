@@ -5,32 +5,63 @@ details[open] {
   padding: 10px;
   margin-bottom: 10px;
 }
-details {
-    display: inline-flex;
-    vertical-align: top;
-    gap: 10px;
-    margin-right: 10px;
+.accordeon > details > summary {
+  list-style: none;
 }
-summary {
-    list-style: none 
+.accordeon > details > summary::marker,
+.accordeon > details > summary::-webkit-details-marker {
+  display: none;
 }
-summary img {
-    width: 200px;
-    height: 200px;
-    margin-right: 5px;
+.accordeon > details {
+  display: block;
+  width: 175px;
+  background-color: #eee;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 5px;
 }
-details[open] h3,
-details[open] p {
-  animation: apparition 0.4s ease;
+.accordeon > details > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.accordeon summary img {
+  width: 100px;
+  display: block;
+}
+.accordeon > details > summary::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 35px solid #aaa;
+}
+.accordeon > details > summary::after {
+  transition: transform 0.3s ease, border-left-color 0.3s ease;
+}
+
+.accordeon > details[open] > summary::after {
+  transform: rotate(90deg);
+  border-left-color: #f4a6a6;
+}
+.accordeon h3 {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+.accordeon p {
+  font-size: 12px;
+  margin: 0 0 5px 0;
+}
+
+.accordeon > details[open] > :not(summary) {
+  animation: apparition 0.3s ease;
 }
 
 @keyframes apparition {
-  from {
-    opacity: 20;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 10;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
